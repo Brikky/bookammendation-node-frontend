@@ -15,13 +15,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/books/list')
+    fetch(`${ENV['API_ROOT']}/api/books/list`)
       .then(res => res.json())
       .then(data => this.setState({ books: data.books }));
   }
 
   handleChange = (selectedBook) => {
-    fetch(`http://localhost:3001/api/books/${selectedBook.value}/recommendations`)
+    fetch(`${ENV['API_ROOT']}/api/books/${selectedBook.value}/recommendations`)
       .then(res => res.json())
       .then(data => this.setState({ recommendations: data.titles }));
   }
